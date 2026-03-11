@@ -1,0 +1,28 @@
+From 6315d3c5007e6c209eb77abae4deece4978d8dbc Mon Sep 17 00:00:00 2001
+From: Aiden Grossman <agrossman154@yahoo.com>
+Date: Thu, 3 Apr 2025 02:18:04 -0700
+Subject: [PATCH] Add Compatibility for CMake 4 (#80)
+Bug-Debian: https://bugs.debian.org/1113316
+Forwarded: https://github.com/intel/ARM_NEON_2_x86_SSE/pull/80
+
+This patch adds compatibility for CMake 4. CMake 4 drops support for projects
+that set a minimum requirement of less than 3.5. That version of CMake was
+released almost ten years ago, so this should not have any practical effects
+on software support while enabling support for more recent CMake versions.
+
+Signed-off-by: Aiden Grossman <aidengrossman@google.com>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ # Boilerplate: Copyright (C) 2014-2017 Ruslan Baratov
+ # Modification: Copyright (C) 2017 David Hirvonen
+ 
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.5)
+ project(NEON_2_SSE VERSION 1.0.0)
+ 
+ add_library(${PROJECT_NAME} INTERFACE)
